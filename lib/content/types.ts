@@ -113,7 +113,7 @@ export interface ConferenceVideo {
   title: string;
   url: string;
   speaker?: string;
-  tags?: string;
+  tags?: string[];
   updated_at: string;
 }
 
