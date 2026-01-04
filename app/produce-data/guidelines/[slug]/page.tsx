@@ -41,7 +41,7 @@ export default async function GuidelinePage({ params }: GuidelinePageProps) {
   const content = readMarkdownFile(guideline.content_path);
 
   return (
-    <DocsLayout content={content}>
+    <DocsLayout>
       <MarkdownContent content={content} />
       <DocsPager currentSlug={slug} />
     </DocsLayout>
