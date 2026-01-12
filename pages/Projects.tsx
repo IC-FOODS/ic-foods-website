@@ -31,7 +31,7 @@ const Projects: React.FC = () => {
   ];
 
   useEffect(() => {
-    fetch('/projects.csv')
+    fetch(`${import.meta.env.BASE_URL}projects.csv`)
       .then(response => response.text())
       .then(csvText => {
         Papa.parse(csvText, {

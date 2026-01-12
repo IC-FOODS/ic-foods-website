@@ -32,7 +32,7 @@ const Publications: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/publications.csv')
+    fetch(`${import.meta.env.BASE_URL}publications.csv`)
       .then(response => response.text())
       .then(csvText => {
         Papa.parse(csvText, {

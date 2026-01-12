@@ -19,7 +19,7 @@ const AboutUs: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/team.csv')
+    fetch(`${import.meta.env.BASE_URL}team.csv`)
       .then(response => response.text())
       .then(csvText => {
         Papa.parse(csvText, {
