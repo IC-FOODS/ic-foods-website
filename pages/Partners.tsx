@@ -32,7 +32,7 @@ const Partners: React.FC = () => {
   ];
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}partners.csv`)
+    fetch(`${import.meta.env.BASE_URL}partners_list.csv`)
       .then(response => response.text())
       .then(csvText => {
         Papa.parse(csvText, {

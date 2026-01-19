@@ -81,8 +81,8 @@ npm run build
 
 Content is managed through CSV files in the `public/` directory:
 - `public/projects.csv` - Research projects and guidelines
-- `public/partners.csv` - Partner organizations
-- `public/team.csv` - Team members
+- `public/partners_list.csv` - Partner organizations
+- `public/about_team.csv` - Team members
 - `public/publications.csv` - Research publications
 
 Edit these CSV files to update the website content without changing code.
