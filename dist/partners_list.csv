@@ -1,11 +1,15 @@
 publish,partner_name,partner_logo_url
-draft,Wolfe's Neck Center for Agriculture & the Environment,
+draft,Wolfe's Neck Center for Agriculture & the Environment,wolfe.png
 draft,New Harvest,
-publish,Georgetown University,
-publish,Vireo Advisors,
-publish,University of California, Davis,
-publish,Royal Society of Chemistry,
-publish,USDA Agricultural Marketing Service,
-publish,Roots of Change,
-publish,Ohio State University,
-publish,Foodtography.Studio,
+,Georgetown University,Georgetown.png
+,Vireo Advisors,vireo_advisors.png
+,"University of California, Davis",fst_logo_250.webp
+,Royal Society of Chemistry,royal_society_of_chemistry.png
+,USDA Agricultural Marketing Service,usda.webp
+,Roots of Change,ROC.jpg
+,Ohio State University,OSU.webp
+,Foodtography.Studio,
+,Food Systems Lab,Food+Systems+Lab.webp
+,ICICLE,ICICLE.webp
+,National Science Foundation Seal,National_Science_Foundation_Seal.webp
+,Texas Advance Computing Center,tacc.webp
