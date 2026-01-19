@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  FileText, 
-  Settings, 
-  MonitorPlay, 
-  ClipboardCheck, 
-  Glasses, 
-  Database, 
+import {
+  FileText,
+  Settings,
+  MonitorPlay,
+  ClipboardCheck,
+  Glasses,
+  Database,
   ArrowRight,
   BookOpen,
   Library,
@@ -215,11 +215,10 @@ const Projects: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center space-x-2 py-6 border-b-2 font-bold text-sm uppercase tracking-wider transition-all whitespace-nowrap ${
-                  activeTab === tab.id
-                    ? 'border-aggie-gold text-aggie-blue'
-                    : 'border-transparent text-gray-400 hover:text-aggie-blueLight'
-                }`}
+                className={`flex items-center space-x-2 py-6 border-b-2 font-bold text-sm uppercase tracking-wider transition-all whitespace-nowrap ${activeTab === tab.id
+                  ? 'border-aggie-gold text-aggie-blue'
+                  : 'border-transparent text-gray-400 hover:text-aggie-blueLight'
+                  }`}
               >
                 <tab.icon size={18} />
                 <span>{tab.label}</span>
@@ -253,9 +252,9 @@ const Projects: React.FC = () => {
                             <div className="flex flex-col">
                               <div className="flex flex-wrap gap-2">
                                 {item.output_types.split('|').map((type, tIdx) => (
-                                  <span 
-                                    key={tIdx} 
-                                    className="inline-flex items-center px-2.5 py-0.5 text-[10px] font-bold bg-white border border-gray-200 text-gray-600"
+                                  <span
+                                    key={tIdx}
+                                    className="inline-flex items-center px-2.5 py-1 text-[10px] font-bold bg-white border border-gray-200 text-aggie-blue uppercase tracking-wider"
                                   >
                                     {type.trim()}
                                   </span>
@@ -273,13 +272,13 @@ const Projects: React.FC = () => {
                       )}
                     </div>
                     {item.external_ra_url && (
-                      <a 
-                        href={item.external_ra_url} 
-                        target="_blank" 
+                      <a
+                        href={item.external_ra_url}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center text-aggie-blue font-bold text-sm hover:text-aggie-gold transition-colors group/btn w-fit"
                       >
-                        View Research Area <ArrowRight size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform" /> 
+                        View Research Area <ArrowRight size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
                       </a>
                     )}
                   </div>
@@ -311,66 +310,49 @@ const Projects: React.FC = () => {
                   };
 
                   return (
-                    <div key={idx} className="bg-aggie-gray p-8 rounded-2xl border border-gray-100 shadow-sm group flex flex-col justify-between hover:shadow-lg transition-all duration-300">
-                      <div className="flex items-start justify-between">
+                    <div key={idx} className="bg-white p-8 rounded-2xl border border-aggie-gold group flex flex-col justify-between hover:shadow-xl hover:border-aggie-gold transition-all duration-300">
+                      <div>
                         <div className={`w-10 h-10 bg-white rounded-lg flex items-center justify-center mb-6 shadow-sm group-hover:bg-aggie-gold transition-colors`}>
                           {getResourceTypeIcon()}
                         </div>
-                        {item.resource_type && (
-                          <span className="px-3 py-1 bg-aggie-gray text-aggie-blue text-xs font-semibold rounded-full uppercase tracking-wide">
-                            {item.resource_type}
-                          </span>
+                        <h3 className="text-xl font-bold text-aggie-blue mb-3">{item.rd_name}</h3>
+                        {item.rd_description && (
+                          <p className="text-gray-600 leading-relaxed text-sm mb-6">{item.rd_description}</p>
                         )}
-                      </div>
-                      
-                      <h3 className="text-xl font-bold text-aggie-blue mb-3">{item.rd_name || 'Untitled Project'}</h3>
-                      <p className="text-gray-600 leading-relaxed mb-6 text-sm">{item.rd_description || 'No description available.'}</p>
-                      
-                      <div className="space-y-3 mb-6 text-xs">
-                        {item.rd_period && (
-                          <div className="flex items-center text-gray-600">
-                            <Calendar size={14} className="mr-2 text-aggie-gold" />
-                            <span className="font-semibold">Period:</span>
-                            <span className="ml-2">{item.rd_period}</span>
-                          </div>
-                        )}
-                        {item.funder_name && (
-                          <div className="flex items-center text-gray-600">
-                            <Award size={14} className="mr-2 text-aggie-gold" />
-                            <span className="font-semibold">Funded by:</span>
-                            <span className="ml-2">{item.funder_name}</span>
-                          </div>
-                        )}
-                        {item.partner_name && (
-                          <div className="flex items-center text-gray-600">
-                            <Building2 size={14} className="mr-2 text-aggie-gold" />
-                            <span className="font-semibold">Partner:</span>
-                            <span className="ml-2">{item.partner_name}</span>
-                          </div>
-                        )}
-                        {item.resource_name && (
-                          <div className="text-gray-600">
-                            <span className="font-semibold">Resource:</span>
-                            <span className="ml-2">{item.resource_name}</span>
-                          </div>
-                        )}
+
+                        <div className="space-y-4 mb-8">
+                          {item.resource_type && (
+                            <div className="flex flex-wrap gap-2">
+                              {item.resource_type.split(',').map((type, tIdx) => (
+                                <span
+                                  key={tIdx}
+                                  className="inline-flex items-center px-2.5 py-1 text-[10px] font-bold bg-aggie-gray/50 border border-gray-200 text-aggie-blue uppercase tracking-wider"
+                                >
+                                  {type.trim()}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          {/* {item.partner_name && (
+                            <p className="text-[11px] text-gray-500 font-semibold italic">
+                              Partnered with: {item.partner_name.replace(/"/g, '')}
+                            </p>
+                          )} */}
+                        </div>
                       </div>
 
-                      {item.external_rd_url ? (
-                        <a 
-                          href={item.external_rd_url}
+                      {item.external_rd_url && (
+                        <a
+                          href={item.external_rd_url.startsWith('http') ? item.external_rd_url : `https://${item.external_rd_url}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center bg-aggie-blue text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-aggie-blueLight transition-all group/btn"
+                          className="flex items-center text-aggie-blue font-bold text-sm hover:text-aggie-gold transition-colors group/btn w-fit"
                         >
-                          <ExternalLink size={16} className="mr-2 group-hover/btn:translate-x-1 transition-transform" />
-                          View Project
+                          View Project <ArrowRight size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
                         </a>
-                      ) : (
-                        <div className="text-center text-gray-400 text-sm py-3">No external link available</div>
                       )}
                     </div>
-                  );
+                  )
                 })}
               </div>
             )}
@@ -389,14 +371,14 @@ const Projects: React.FC = () => {
                     </div>
                     <h3 className="text-xl font-bold text-aggie-blue mb-3">{item.resource_name}</h3>
                     <p className="text-gray-600 leading-relaxed text-sm mb-6">{item.resource_description}</p>
-                    
+
                     <div className="space-y-4 mb-8">
                       <div className="flex flex-col">
                         <div className="flex flex-wrap gap-2">
                           {item.resource_type.split(',').map((type, tIdx) => (
-                            <span 
-                              key={tIdx} 
-                              className="inline-flex items-center px-2.5 py-0.5 text-[10px] font-bold bg-aggie-gray border border-gray-100 text-gray-600"
+                            <span
+                              key={tIdx}
+                              className="inline-flex items-center px-2.5 py-1 text-[10px] font-bold bg-aggie-gray/50 border border-gray-200 text-aggie-blue uppercase tracking-wider"
                             >
                               {type.trim()}
                             </span>
@@ -405,9 +387,9 @@ const Projects: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  <a 
-                    href={item.resource_url} 
-                    target="_blank" 
+                  <a
+                    href={item.resource_url}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center text-aggie-blue font-bold text-sm hover:text-aggie-gold transition-colors group/btn w-fit"
                   >
@@ -416,7 +398,7 @@ const Projects: React.FC = () => {
                     ) : (
                       <><Globe size={16} className="mr-2" /> Visit Resource</>
                     )}
-                    <ArrowRight size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform" /> 
+                    <ArrowRight size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
                   </a>
                 </div>
               ))}
