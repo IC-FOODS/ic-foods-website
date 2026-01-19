@@ -1,0 +1,4 @@
+# Team Photos Folder
+
+Place team member headshot photo files (JPG, PNG, etc.) in this folder.
+Reference them in about_team.csv by their filename (e.g., "lange_headshot.jpg").
