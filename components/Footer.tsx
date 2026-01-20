@@ -27,6 +27,7 @@ const Footer: React.FC = () => {
               216 F Street, Suite 139<br />
               Davis, CA 95616<br />
               United States
+              Email: info@ic-foods.org
             </div>
           </div>
         </div>
