@@ -162,15 +162,15 @@ const Home: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 pointer-events-auto">
             <button
-              onClick={() => navigate('/r-and-d')}
+              onClick={() => navigate('/research')}
               className="bg-aggie-gold text-aggie-blue px-8 py-3 rounded-md font-bold text-lg hover:bg-white transition-all shadow-lg"
             >
-              Explore Projects
+              Explore Our Work
             </button>
             <button 
-              onClick={() => navigate('/publications')}
+              onClick={() => navigate('/connect')}
               className="border-2 border-white text-white px-8 py-3 rounded-md font-bold text-lg hover:bg-white hover:text-aggie-blue transition-all">
-              Learn How It Works
+              Collaborate With Us
             </button>
           </div>
         </div>
