@@ -24,8 +24,8 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold mb-4 uppercase text-xs tracking-widest text-gray-500">Contact</h4>
             <div className="text-sm text-gray-600 leading-relaxed">
-              123 Research Avenue<br />
-              San Francisco, CA 94105<br />
+              216 F Street, Suite 139<br />
+              Davis, CA 95616<br />
               United States
             </div>
           </div>
