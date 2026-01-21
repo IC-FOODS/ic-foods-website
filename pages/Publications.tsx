@@ -142,7 +142,7 @@ const Publications: React.FC = () => {
                       </div>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-aggie-blue mb-2 leading-tight group-hover:text-aggie-blueLight transition-colors">
+                    <h3 className="text-xl font-bold text-aggie-blue mb-2 leading-tight group-hover:text-aggie-blueLight transition-colors">
                       {pub.publication_text}
                     </h3>
 
