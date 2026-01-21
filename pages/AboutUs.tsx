@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Linkedin, Target, Zap, Users, ArrowLeftRight, GraduationCap } from 'lucide-react';
+import { Linkedin, Target, Users, GraduationCap } from 'lucide-react';
 import Papa from 'papaparse';
 
 interface TeamMember {
@@ -16,7 +16,7 @@ interface TeamMember {
 }
 
 const AboutUs: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'mission' | 'activity' | 'team'>('team');
+  const [activeTab, setActiveTab] = useState<'mission' | 'team'>('team');
   const [teamFilter, setTeamFilter] = useState<'All' | 'Board' | 'Staff' | 'Advisors' | 'Fellows' | 'Emeriti' | 'Alumni'>('All');
   const [team, setTeam] = useState<TeamMember[]>([]);
   const [loading, setLoading] = useState(true);
@@ -57,7 +57,6 @@ const AboutUs: React.FC = () => {
   const tabs = [
     { id: 'team', label: 'Team', icon: Users },
     { id: 'mission', label: 'Mission', icon: Target },
-    { id: 'activity', label: 'Core Activity', icon: Zap },
   ];
 
   const filterOptions = ['All', 'Staff', 'Board', 'Advisors', 'Fellows', 'Emeriti', 'Alumni'] as const;
@@ -149,7 +148,7 @@ const AboutUs: React.FC = () => {
                 <p>
                 We develop shared language, standards, and digital infrastructure enabling seamless communication across food system sectors--from agriculture and manufacturing to nutrition and health.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
                   <div className="bg-aggie-gray p-6 rounded-xl border border-gray-100">
                     <h4 className="font-bold text-aggie-blue mb-2">Lowering barriers to entry</h4>
                     <p className="text-sm">Making it easier for individuals and small businesses to use digital tools, participate in markets, and succeed—without needing specialized expertise or resources.</p>
@@ -166,44 +165,6 @@ const AboutUs: React.FC = () => {
                     <h4 className="font-bold text-aggie-blue mb-2">Decentralization</h4>
                     <p className="text-sm">Equipping local food system actors with digital tools previously available only to industrial giants.</p>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'activity' && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="max-w-4xl mx-auto space-y-12 py-8">
-              <div className="flex items-start space-x-6">
-                <div className="text-4xl font-black text-aggie-gold pt-1">01</div>
-                <div>
-                  <h3 className="text-xl font-bold text-aggie-blue mb-3 uppercase tracking-tight">Conference</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    The meeting of stakeholders from the 
-                    <span className="inline-flex items-center mx-1 font-semibold text-aggie-blue">Environment <ArrowLeftRight size={14} className="mx-1 text-aggie-gold" /> Ag <ArrowLeftRight size={14} className="mx-1 text-aggie-gold" /> Food <ArrowLeftRight size={14} className="mx-1 text-aggie-gold" /> Diet <ArrowLeftRight size={14} className="mx-1 text-aggie-gold" /> Health</span> 
-                    knowledge spectrum across academic institutions and businesses.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-6">
-                <div className="text-4xl font-black text-aggie-gold pt-1">02</div>
-                <div>
-                  <h3 className="text-xl font-bold text-aggie-blue mb-3 uppercase tracking-tight">Consortium</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    The IC-FOODS platform has a membership model to represent stakeholders from academia, industry, and governmental organizations to guide research priorities.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-6">
-                <div className="text-4xl font-black text-aggie-gold pt-1">03</div>
-                <div>
-                  <h3 className="text-xl font-bold text-aggie-blue mb-3 uppercase tracking-tight">Centre</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    The IC-FOODS sources external funds from granting bodies in order to expand capacity for the consortium members and the center itself.
-                  </p>
                 </div>
               </div>
             </div>
