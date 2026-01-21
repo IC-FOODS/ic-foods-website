@@ -246,7 +246,7 @@ const Projects: React.FC = () => {
                       </div>
                       <h3 className="text-xl font-bold text-aggie-blue mb-3">{item.ra_name || 'Untitled Research Area'}</h3>
                       <p className="text-gray-600 leading-relaxed text-sm mb-6">{item.ra_description || 'No description available.'}</p>
-                      {(item.partner_name || item.resource_name) && (
+                      {item.output_types && (
                         <div className="mb-6 space-y-2 text-xs text-gray-500">
                           <div className="space-y-4 mb-8">
                             <div className="flex flex-col">
