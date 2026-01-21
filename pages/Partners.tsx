@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle2, Star, Globe2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import Papa from 'papaparse';
 
 interface Partner {
@@ -111,58 +111,6 @@ const Partners: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Partner Success Story Section */}
-      <section className="bg-aggie-gray py-20 border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-aggie-blue mt-2">Success Story: Global Hunger Initiative</h2>
-          </div>
-          
-          <div className="bg-white rounded-3xl overflow-hidden shadow-sm flex flex-col md:flex-row border border-gray-200">
-            <div className="md:w-1/2 bg-aggie-blue p-12 text-white flex flex-col justify-center">
-              <div className="flex items-center space-x-2 mb-6">
-                <Star className="text-aggie-gold fill-aggie-gold" size={24} />
-                <span className="text-lg font-bold tracking-tight uppercase">Impact Highlights</span>
-              </div>
-              <p className="text-blue-100 text-lg leading-relaxed mb-6 italic">
-                "Working with IC-FOODS allowed us to finally see the invisible gaps in our distribution network. Their semantic framework turned raw spreadsheets into life-saving insights for thousands of households."
-              </p>
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                  <Globe2 size={24} className="text-aggie-gold" />
-                </div>
-                <div>
-                  <p className="font-bold">Regional Logistics Director</p>
-                  <p className="text-sm text-blue-300">Global Hunger Initiative (GHI)</p>
-                </div>
-              </div>
-            </div>
-            <div className="md:w-1/2 p-12">
-              <div className="space-y-8">
-                <div>
-                  <h4 className="text-xs font-bold text-red-600 uppercase tracking-widest mb-2">The Collaboration</h4>
-                  <p className="text-gray-700 leading-relaxed text-sm">
-                    We partnered with GHI to develop the "Last-Mile Delivery Ontology," a specialized semantic bridge that connects diverse agricultural logistics data with local nutritional requirement databases across East Africa.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-aggie-blue uppercase tracking-widest mb-2">Problem Solved</h4>
-                  <p className="text-gray-700 leading-relaxed text-sm">
-                    Prior to our intervention, disconnected data silos meant urban food centers couldn't accurately predict fleet availability in rural zones, leading to a 15% spoilage rate in perishable nutritional supplements.
-                  </p>
-                </div>
-                <div className="bg-yellow-50 p-6 rounded-2xl border border-yellow-100">
-                  <h4 className="text-xs font-bold text-aggie-gold uppercase tracking-widest mb-2">Measured Impact</h4>
-                  <p className="text-aggie-blue font-medium">
-                    Real-time semantic synchronization reduced logistical spoilage by <span className="text-2xl font-black">30%</span> and improved supply chain transparency by <span className="text-2xl font-black">85%</span>.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Global Network Section with Logos */}
       <section className="py-24 bg-white">

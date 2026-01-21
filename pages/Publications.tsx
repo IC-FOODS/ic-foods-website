@@ -5,13 +5,19 @@ import Papa from 'papaparse';
 
 interface Publication {
   publish: string;
-  publication_text: string;
-  publication_file_name: string;
-  author_list: string;
-  publication_type: string;
-  project_url: string;
-  resource_url: string;
-  method: string;
+  // Support both legacy and current CSV headers:
+  // - "publication_text" (legacy) OR "publication_citation" (current)
+  publication_text?: string;
+  publication_citation?: string;
+  publication_file_name?: string;
+  author_list?: string;
+  publication_type?: string;
+  project_url?: string;
+  resource_url?: string;
+  method?: string;
+  // - "date" (legacy) OR "Date" (current)
+  date?: string;
+  Date?: string;
 }
 
 const Publications: React.FC = () => {
@@ -27,10 +33,22 @@ const Publications: React.FC = () => {
           skipEmptyLines: true,
           complete: (results) => {
             // Filter only rows where publish === "publish"
-            const published = (results.data as Publication[]).filter(
+            const publishedRaw = (results.data as Publication[]).filter(
               (pub) => pub.publish && pub.publish.toLowerCase().trim() === 'publish'
             );
-            setPublications(published);
+
+            // Normalize fields so rendering is consistent even if CSV headers vary.
+            const normalized = publishedRaw.map((pub) => {
+              const citation = (pub.publication_text || pub.publication_citation || '').toString().trim();
+              const date = (pub.date || pub.Date || '').toString().trim();
+              return {
+                ...pub,
+                publication_text: citation,
+                date
+              };
+            });
+
+            setPublications(normalized);
             setLoading(false);
           },
           error: (error) => {
@@ -70,7 +88,12 @@ const Publications: React.FC = () => {
   const getPublicationFileUrl = (filename: string) => {
     if (!filename) return null;
     const trimmed = filename.trim();
-    // Publication files are in the publications folder
+    // Sometimes this column is an external URL (e.g., DOI). Support both.
+    if (isUrl(trimmed)) {
+      if (trimmed.startsWith('www.')) return `https://${trimmed}`;
+      return trimmed;
+    }
+    // Publication files are in the publication folder
     return `${import.meta.env.BASE_URL}publication/${trimmed}`;
   };
 
@@ -97,10 +120,16 @@ const Publications: React.FC = () => {
           <div className="text-center py-12 text-gray-500">Loading publications...</div>
         ) : (
           <div className="grid grid-cols-1 gap-8">
+            {publications.length === 0 && (
+              <div className="text-center py-12 text-gray-500">
+                No published publications yet.
+              </div>
+            )}
             {publications.map((pub, idx) => {
               const resourceUrl = pub.resource_url ? getResourceUrl(pub.resource_url) : null;
               const isResourceFile = resourceUrl && !isUrl(pub.resource_url || '');
               const publicationFileUrl = pub.publication_file_name ? getPublicationFileUrl(pub.publication_file_name) : null;
+              const isPublicationFile = publicationFileUrl && !isUrl(pub.publication_file_name || '');
               const projectUrl = pub.project_url ? getResourceUrl(pub.project_url) : null;
               const isProjectFile = projectUrl && !isUrl(pub.project_url || '');
 
@@ -131,14 +160,18 @@ const Publications: React.FC = () => {
                   </div>
 
                   <div className="mt-8 md:mt-0 flex flex-col justify-center items-start md:items-end md:min-w-[220px] border-t md:border-t-0 md:border-l border-gray-200 pt-6 md:pt-0 md:pl-8 space-y-5">
-                    <a
-                      href={publicationFileUrl}
-                      download={pub.publication_file_name}
-                      className="inline-flex items-center bg-aggie-blue text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-aggie-blueLight transition-all shadow-sm hover:shadow-md w-full md:w-full justify-center"
-                    >
-                      <FileText size={18} className="mr-2" />
-                      View Full Text
-                    </a>
+                    {publicationFileUrl && (
+                      <a
+                        href={publicationFileUrl}
+                        target={isPublicationFile ? undefined : "_blank"}
+                        rel={isPublicationFile ? undefined : "noopener noreferrer"}
+                        download={isPublicationFile ? pub.publication_file_name?.trim() : undefined}
+                        className="inline-flex items-center bg-aggie-blue text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-aggie-blueLight transition-all shadow-sm hover:shadow-md w-full md:w-full justify-center"
+                      >
+                        <FileText size={18} className="mr-2" />
+                        View Full Text
+                      </a>
+                    )}
 
                     <div className="flex flex-col space-y-3 w-full items-start md:items-end pr-2">
                       {pub.project_url && (
