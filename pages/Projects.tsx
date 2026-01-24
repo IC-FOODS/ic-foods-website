@@ -195,6 +195,12 @@ const Projects: React.FC = () => {
     return (lowerUrl.endsWith('.xlsx') || lowerUrl.endsWith('.xls') || lowerUrl.endsWith('.pdf')) && !lowerUrl.startsWith('http');
   };
 
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId as any);
+    // Scroll to the sub-navigation position (300 is an approximate value of the hero section height)
+    window.scrollTo(0, 300);
+  };
+
   return (
     <div className="bg-white min-h-screen pb-20">
       {/* Hero Section strictly aligned with Publications page styling */}
@@ -214,7 +220,7 @@ const Projects: React.FC = () => {
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
+                onClick={() => handleTabClick(tab.id)}
                 className={`flex items-center space-x-2 py-6 border-b-2 font-bold text-sm uppercase tracking-wider transition-all whitespace-nowrap ${activeTab === tab.id
                   ? 'border-aggie-gold text-aggie-blue'
                   : 'border-transparent text-gray-400 hover:text-aggie-blueLight'

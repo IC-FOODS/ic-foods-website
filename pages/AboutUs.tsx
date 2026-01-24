@@ -76,6 +76,12 @@ const AboutUs: React.FC = () => {
       .toUpperCase();
   };
 
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId as any);
+    // Scroll to the sub-navigation position (300 is an approximate value of the hero section height)
+    window.scrollTo(0, 300);
+  };
+
   const filteredTeam = team.filter(member => {
     const role = member.member_role.toLowerCase();
     const isAlum = role.includes('alum');
@@ -122,7 +128,7 @@ const AboutUs: React.FC = () => {
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
+                onClick={() => handleTabClick(tab.id)}
                 className={`flex items-center space-x-2 py-6 border-b-2 font-bold text-sm uppercase tracking-wider transition-all whitespace-nowrap ${
                   activeTab === tab.id
                     ? 'border-aggie-gold text-aggie-blue'
