@@ -16,6 +16,11 @@ const Navbar: React.FC = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  const handleNavClick = () => {
+    window.scrollTo(0, 0);
+    setIsOpen(false);
+  };
+
   return (
     <nav className="bg-aggie-blue sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,6 +52,7 @@ const Navbar: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.path}
+                onClick={handleNavClick}
                 className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   isActive(item.path)
                     ? 'text-aggie-gold border-b-2 border-aggie-gold'
@@ -58,6 +64,7 @@ const Navbar: React.FC = () => {
             ))}
             <Link
               to="/connect"
+              onClick={handleNavClick}
               className="bg-aggie-gold text-aggie-blue px-4 py-2 rounded-md text-sm font-bold hover:bg-white transition-all"
             >
               Connect
@@ -90,7 +97,7 @@ const Navbar: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                onClick={() => setIsOpen(false)}
+                onClick={handleNavClick}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive(item.path)
                     ? 'bg-aggie-blue text-aggie-gold'
@@ -102,7 +109,7 @@ const Navbar: React.FC = () => {
             ))}
             <Link
               to="/connect"
-              onClick={() => setIsOpen(false)}
+              onClick={handleNavClick}
               className="block px-3 py-2 rounded-md text-base font-bold bg-aggie-gold text-aggie-blue"
             >
               Connect With Us
