@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Mail, MapPin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -23,14 +24,22 @@ const Footer: React.FC = () => {
               <li><Link to="/conferences" className="hover:text-aggie-gold">Conferences</Link></li>
             </ul>
           </div>
-          <div>
-            <h4 className="font-bold mb-4 uppercase text-xs tracking-widest text-gray-500">Contact</h4>
-            <div className="text-sm text-gray-600 leading-relaxed">
-              216 F Street, Suite 139<br />
-              Davis, CA 95616<br />
-              United States<br />
-              Email: info@ic-foods.org
+          <div className="flex flex-col space-y-4">
+            <div className="flex items-start text-sm text-gray-600 leading-relaxed">
+              <MapPin size={18} className="mr-3 text-aggie-gold flex-shrink-0 mt-0.5" />
+              <div>
+                216 F Street, Suite 139<br />
+                Davis, CA 95616<br />
+                United States<br />
+              </div>
             </div>
+            <a
+              href="mailto:info@ic-foods.org"
+              className="inline-flex items-center text-sm text-gray-600 hover:text-aggie-gold transition-colors group"
+            >
+              <Mail size={18} className="mr-3 text-aggie-gold flex-shrink-0" />
+              info@ic-foods.org
+            </a>
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-gray-300 text-center text-xs text-gray-500">
